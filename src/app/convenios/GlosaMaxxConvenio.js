@@ -5,7 +5,7 @@ class GlosaMaxxConvenio{
     async getAnalyticDemonstrative(competencia, baseURL){
         const urlDemonstrativePage = await this.getDemonstrativePageURL(baseURL)
         const urlDemonstatives = await this.getDemonstrativesURL(baseURL,`${baseURL}${urlDemonstrativePage}`)
-        const demonstrativeInfos =  await this.getDemonstrativesInfo([urlDemonstatives[2]])
+        const demonstrativeInfos =  await this.getDemonstrativesInfo(urlDemonstatives)
         return demonstrativeInfos
     }
 
