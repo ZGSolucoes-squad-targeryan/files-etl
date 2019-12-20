@@ -3,7 +3,7 @@ import Handler from "../helpers/Handler";
 class DemonstrativeController {
 
     async index(req,res){
-        const { convenio, competencia } = req.body;
+        const { convenio, competencia } = req.query;
         if(!convenio){
             return res.status(400).json({error: 'Insuficient params to get demonstratives'})
         }
