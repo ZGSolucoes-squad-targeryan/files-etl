@@ -1,5 +1,6 @@
 import api from '../services/api';
-import {csvToJson} from '../utils/csvToJson'
+
+import Papa from 'papaparse'
 
 class GlosaMaxxConvenio{
     async getAnalyticDemonstrative(competencia, baseURL){
@@ -41,11 +42,10 @@ class GlosaMaxxConvenio{
         const infos = await Promise.all(urlDemonstatives.map(async actualInfos => {
             const actualURL = actualInfos.url
             const response = await api.get(actualURL)
-
-            return csvToJson(response.data, {
-                discriminador: 'CONVENIO',
-                nomeArquivo: actualInfos.fileName
-            });
+            const parsed = Papa.parse(response.data, {
+                header: true
+            })
+            return parsed.data
         }));
 
         return [].concat.apply([], infos);
