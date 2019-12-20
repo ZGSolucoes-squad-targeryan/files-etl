@@ -38,7 +38,7 @@ class GlosaMaxxConvenio{
     }
 
     async getDemonstrativesInfo(urlDemonstatives){
-        return await Promise.all(urlDemonstatives.map(async actualInfos => {
+        const infos = await Promise.all(urlDemonstatives.map(async actualInfos => {
             const actualURL = actualInfos.url
             const response = await api.get(actualURL)
 
@@ -47,6 +47,8 @@ class GlosaMaxxConvenio{
                 nomeArquivo: actualInfos.fileName
             });
         }));
+
+        return [].concat.apply([], infos);
     }
 }
 
