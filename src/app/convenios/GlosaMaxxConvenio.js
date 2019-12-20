@@ -6,7 +6,6 @@ class GlosaMaxxConvenio{
         const urlDemonstrativePage = await this.getDemonstrativePageURL(baseURL)
         const urlDemonstatives = await this.getDemonstrativesURL(baseURL,`${baseURL}${urlDemonstrativePage}`)
         const demonstrativeInfos =  await this.getDemonstrativesInfo([urlDemonstatives[2]])
-        console.log(demonstrativeInfos)
         return demonstrativeInfos
     }
 
